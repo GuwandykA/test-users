@@ -1,0 +1,38 @@
+version: '3.4'
+
+services:
+  db:
+    image: postgres:14.1-alpine
+    container_name: "test-db"
+    restart: always
+    environment:
+      - POSTGRES_USER=simple_admin
+      - POSTGRES_PASSWORD=simple_password
+      - POSTGRES_DB=simple_db
+    ports:
+      - '5434:5432'
+    volumes:
+      - /var/lib/postgresql/data
+    networks:
+      - network
+  server:
+      image: test
+      restart: unless-stopped
+      container_name: "test"
+      build:
+        context: .
+        dockerfile: Dockerfile
+      ports:
+        - 8082:8082
+      volumes:
+        - ./public:/app/public
+      depends_on:
+        - db
+      networks:
+        - network
+
+
+networks:
+  network:
+    driver: bridge
+

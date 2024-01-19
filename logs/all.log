@@ -1,0 +1,2 @@
+time="2024-01-19T18:04:42+05:00" level=info msg="read application configuration" func="test-backend/internal/config.GetConfig.func1()" file="config.go:39"
+time="2024-01-19T18:04:42+05:00" level=info msg="start application" func="main.start()" file="app.go:53"

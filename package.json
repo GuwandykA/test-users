@@ -1,0 +1,6 @@
+{
+    "apps" : [{
+      "name"        : "test-backend",
+      "script"      : "./app"
+    }]
+}
